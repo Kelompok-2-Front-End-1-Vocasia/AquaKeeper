@@ -7,7 +7,11 @@ function privateRoute(Component) {
     const auth = localStorage.getItem("auth");
 
     useEffect(() => {
-      if (!auth) navigate("/");
+      if (!auth) {
+        navigate("/");
+      } else if (auth) {
+        navigate("/home");
+      }
     }, [auth]);
 
     return <Component />;

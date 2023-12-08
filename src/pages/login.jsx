@@ -7,6 +7,7 @@ import { login } from "../utils/auth";
 import { Toast } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import privateRoute from "../hoc/privateRoute";
 
 const Login = () => {
   const [showing, setShowing] = useState(false);
@@ -146,4 +147,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default privateRoute(Login);
