@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js";
 import { instance } from "./instance";
+import { useNavigate } from "react-router-dom";
 
 export const encrypt = (text) => {
   const data = CryptoJS.AES.encrypt(
@@ -34,4 +35,9 @@ export const login = async (values) => {
   });
 
   return res;
+};
+
+export const logout = () => {
+  localStorage.removeItem("auth");
+  window.location.reload();
 };
