@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+#root {
+    background: var(--bg-gradient, linear-gradient(180deg, rgba(56, 189, 248, 0.20) 0%, rgba(240, 249, 255, 0.20) 49.06%, rgba(14, 165, 233, 0.20) 100%), #F6FAFF);
+}
+.bg-header {
+    background-color: #0D81D5;
+}

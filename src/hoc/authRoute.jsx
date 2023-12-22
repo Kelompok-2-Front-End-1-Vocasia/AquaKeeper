@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function privateRoute(Component) {
+function authRoute(Component) {
   return () => {
     const navigate = useNavigate();
     const auth = localStorage.getItem("auth");
 
     useEffect(() => {
-      if (!auth) {
-        navigate("/");
+      if (auth) {
+        navigate("/home");
       } 
     }, [auth]);
 
@@ -16,4 +16,4 @@ function privateRoute(Component) {
   };
 }
 
-export default privateRoute;
+export default authRoute;
