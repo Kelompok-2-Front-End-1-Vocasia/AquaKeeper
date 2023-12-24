@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="overflow-hidden">
+      <div className="">
         <Toast
           className={
             showAlert ? "absolute right-10 top-6" : "absolute right-full top-6"
@@ -60,23 +60,23 @@ const Login = () => {
           <Toast.Toggle />
         </Toast>
         <div className="container h-screen mx-auto flex justify-center items-center bg-[#F6F6F6] min-w-full">
-          <div className="mx-auto bg-[#FFFFFF] shadow-md sm:w-[1021px] sm:h-[504px] sm:rounded-[30px]">
-            <div className="text-center pt-10 sm:mt-[22px] sm:pt-0">
-              <span className="text-3xl sm:text-[40px] font-bold text-[#0F8FED]">
+          <div className="mx-auto h-screen bg-[#F6F6F6] sm:bg-[#FFFFFF] sm:shadow-lg w-full sm:w-[1021px] sm:h-[504px] sm:rounded-[30px]">
+            <div className="text-center mt-[44px] sm:mt-[22px] sm:w-[278px] sm:h-[65px] sm:mx-auto">
+              <div className="text-[32px] sm:text-[40px] font-bold text-[#0F8FED]">
                 AquaKeeper
-              </span>
+              </div>
             </div>
-            <div className="flex gap-[95px] mt-[16px] w-full justify-center">
-              <div className="relative sm:static opacity-10 sm:opacity-100 -top-16">
+            <div className="flex flex-col w-full pb-[44px] sm:flex-row items-center sm:items-start sm:justify-center sm:mt-[16px]">
+              <div className="w-[235px] h-[235px] sm:w-[341px] sm:h-[341px]">
                 <img src="/src/assets/fish-bowl.png" alt="" />
               </div>
-              <div className="mt-[23px] absolute sm:static">
+              <div className="mt-[14px] sm:mt-[23px] sm:ms-[95px]">
                 <form
                   onSubmit={formik.handleSubmit}
                   className="flex flex-col items-center"
                 >
                   <div className="mb-[14px]">
-                    <span className="text-[16px] font-medium text-[#0D81D5] opacity-[.60]">
+                    <span className="text-[16px] font-medium text-[#0D81D5] opacity-[.55]">
                       Username
                     </span>
                     <input
@@ -84,11 +84,11 @@ const Login = () => {
                       name="username"
                       onChange={formik.handleChange}
                       value={formik.values.username}
-                      className="block w-64 h-[52px] rounded-[15px] bg-[#EDEDED] text-xl px-3 sm:w-[457px] sm:h-[52px]"
+                      className="block w-[304px] h-[52px] rounded-[15px] bg-[#EDEDED] text-xl px-3 sm:w-[457px] sm:h-[52px]"
                     />
                   </div>
                   <div>
-                    <span className="text-[16px] font-medium text-[#0D81D5] opacity-[.60]">
+                    <span className="text-[16px] font-medium text-[#0D81D5] opacity-[.55]">
                       Password
                     </span>
                     <div className="relative">
@@ -97,7 +97,7 @@ const Login = () => {
                         name="password"
                         onChange={formik.handleChange}
                         value={formik.values.password}
-                        className="w-64 h-[52px] rounded-[15px] bg-[#EDEDED] text-xl px-3 sm:w-[457px] sm:h-[52px]"
+                        className="w-[304px] h-[52px] rounded-[15px] bg-[#EDEDED] text-xl px-3 sm:w-[457px] sm:h-[52px]"
                       />
                       <button
                         type="button"
@@ -113,7 +113,7 @@ const Login = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-[188px] h-[52px] bg-[#0D81D5] rounded-[15px] text-white hover:bg-[#0d7bd5] hover:shadow-lg mt-[39px]"
+                    className="w-[188px] h-[52px] bg-[#0D81D5] rounded-[15px] text-white hover:bg-[#0d7bd5] hover:shadow-lg mt-[33px] text-[16px]"
                   >
                     Masuk
                   </button>
