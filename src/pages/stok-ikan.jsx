@@ -1,7 +1,7 @@
 import privateRoute from "../hoc/privateRoute";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import Header from "../components/Header";
-import Menu from "../components/menu";
+import Menu from "../components/Menu";
 import { Dropdown, DropdownItem } from "flowbite-react";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -15,29 +15,26 @@ const StokIkan = () => {
 
         <Menu />
 
-        <div className=" flex justify-between mt-12 ml-24 mr-24">
-          <button className="flex gap-4 text-black font-semibold px-8 py-4 rounded-2xl bg-white text-left focus:bg-blue-600 focus:text-white">
-            <img
-              src="/src/assets/plus.svg"
-              alt=""
-              className="w-6 self-center"
-            />
-            <p className="self-center">Tambah Data Ikan</p>
+        <div className="flex flex-col md:flex-row items-center justify-between mt-12 ml-4 md:ml-24 mr-4 md:mr-24">
+        <button className="flex gap-4 text-black font-semibold px-4 py-2 md:px-8 md:py-4 rounded-2xl bg-white text-left focus:bg-blue-600 focus:text-white">
+          <img src="/src/assets/plus.svg" alt="" className="w-4 md:w-6 self-center" />
+          <p className="self-center">Tambah Data Ikan</p>
           </button>
 
-          <div className="flex gap-6">
-          <div className="flex ">
-            <input 
-            type="search" 
-            placeholder="Search"
-            className="rounded-l-xl self-center py-3 border-0 "
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-4 md:ml-24 mr-4 md:mr-24 mt-4"></div>
+          <div className="flex gap-4 md:gap-6">
+            <div className="flex">
+              <input 
+              type="search" 
+              placeholder="Search"
+              className="rounded-l-xl self-center py-3 border-0"
+              />
             <button className="bg-blue-500 text-white self-center p-1 rounded-r-xl">
-            <IoSearchOutline style={{ fontSize: '2.5rem' }} />
-            </button>
-          </div>
+              <IoSearchOutline style={{ fontSize: '2.5rem' }} />
+              </button>
+            </div>
 
-          <Dropdown label="Filtering By" dismissOnClick={false} style={ {borderRadius:'12px', backgroundColor:'white', color:'black'} }>
+            <Dropdown label="Filtering By" dismissOnClick={false} style={{ borderRadius: '12px', backgroundColor: 'white', color: 'black' }}>
             <DropdownItem as={Link} to="/ikan-terjual"> A - Z</DropdownItem>
             <DropdownItem>Z - A</DropdownItem>
             <DropdownItem>Stok Tertinggi</DropdownItem>
@@ -51,12 +48,12 @@ const StokIkan = () => {
       </div>
 
       <div>
-        <div className="grid grid-cols-3 ml-24 mr-24 mt-12 gap-10 ">
-          <div className="bg-white rounded-3xl max-w-sm ">
-            <div className="flex justify-center items-center">
-              <img src="/src/assets/ikan.svg" alt="" className="self-center " />
-            </div>
-            <div className="flex justify-between px-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ml-4 md:ml-24 mr-4 md:mr-24 mt-12">
+      <div className="bg-white rounded-3xl max-w-full md:max-w-sm">
+      <div className="flex justify-center items-center">
+        <img src="/src/assets/ikan.svg" alt="" className="self-center mx-auto" />
+        </div>
+            <div className="flex justify-between px -4 md: px-8">
               <p>Total Stok</p>
               <p>600 / 1000</p>
             </div>
@@ -75,7 +72,7 @@ const StokIkan = () => {
               <p>40rb</p>
             </div>
 
-            <div className="py-6 px-8">
+            <div className="py-4 md:py-6 px-4 md:px-8">
               <button className=" mt-2 text-center text-white bg-[#0F8FED]  p-2 w-full rounded-lg">
                 Tambah Stok
               </button>
