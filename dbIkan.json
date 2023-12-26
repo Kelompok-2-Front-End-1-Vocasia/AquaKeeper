@@ -1,0 +1,22 @@
+{
+  "fishes": [
+    {
+      "id": 1,
+      "nama": "Ikan Nemo",
+      "harga": 50,
+      "jumlah": "1000"
+    },
+    {
+      "id": 2,
+      "nama": "Ikan Koi",
+      "harga": 30,
+      "jumlah": 15
+    },
+    {
+      "id": 3,
+      "nama": "Ikan Cupang",
+      "harga": "2000",
+      "jumlah": 20
+    }
+  ]
+}

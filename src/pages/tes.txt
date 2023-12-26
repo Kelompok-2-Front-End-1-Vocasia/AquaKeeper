@@ -1,0 +1,9 @@
+<div className=" flex justify-between mt-12 ml-24 mr-24">
+          <button className="flex gap-4 text-black font-semibold px-8 py-4 rounded-2xl bg-white text-left focus:bg-blue-600 focus:text-white">
+            <img
+              src="/src/assets/plus.svg"
+              alt=""
+              className="w-6 self-center"
+            />
+            <p className="self-center">Tambah Data Ikan</p>
+          </button>

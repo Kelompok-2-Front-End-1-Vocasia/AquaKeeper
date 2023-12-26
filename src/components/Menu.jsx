@@ -23,7 +23,9 @@ const Menu = () => {
             Ikan Terjual
             </p>
         </button>
-        <button className="flex gap-4 text-black font-semibold px-8 py-2 rounded-2xl bg-white focus:bg-blue-600 focus:text-white">
+        <button 
+        onClick={() => navigate("/tambah-ikan")}
+        className="flex gap-4 text-black font-semibold px-8 py-2 rounded-2xl bg-white focus:bg-blue-600 focus:text-white">
             <img src="/src/assets/growth.svg" alt="" className="w-8 self-center" />
             <p className="self-center">
             Analisis Penjualan
