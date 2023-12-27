@@ -4,7 +4,9 @@ import Login from "./pages/login";
 import StokIkan from "./pages/stok-ikan";
 // import IkanTerjual from "./pages/ikan-terjual";
 import SalesRecord from "./pages/ikanTerjual";
-import FishComponent from "./pages/tambahIkan";
+// import FishComponent from "./pages/tambahIkan";
+import AnalisisPenjualan from "./pages/analisisPenjualan";
+
 function App() {
   return (
     <>
@@ -13,7 +15,8 @@ function App() {
           <Route path="/" exact element={<Login />} />
           <Route path="/home" exact element={<StokIkan />} />
           <Route path="/ikan-terjual" exact element={<SalesRecord />} />
-          <Route path="/tambah-ikan" exact element={<FishComponent />} />
+          <Route path="/analisis-penjualan" exact element={<AnalisisPenjualan />} />
+          
 
           
         </Routes>
