@@ -4,17 +4,18 @@ import Header from "../components/Header";
 import Menu from "../components/menu";
 import { Dropdown, DropdownItem } from "flowbite-react";
 import { IoSearchOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { Button, Modal } from "flowbite-react";
 import { useState, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
 import axios from "axios";
 
 const StokIkan = () => {
-  // const [openModal, setOpenModal] = useState(false);
+  
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFish, setSelectedFish] = useState(null);
+  
 
   const openModal = () => {
     setIsOpen(true);
@@ -112,6 +113,85 @@ const StokIkan = () => {
     setIsOpen(true);
   };
   
+  const sortDataAZ = () => {
+    const sortedData = [...fishes].sort((a, b) => {
+      const nameA = a.nama.toUpperCase(); // Ubah ke huruf besar agar pengurutan tidak case sensitive
+      const nameB = b.nama.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+
+    setFishes(sortedData);
+  };
+
+  const sortDataZA = () => {
+    const sortedData = [...fishes].sort((a, b) => {
+      const nameA = a.nama.toUpperCase(); // Ubah ke huruf besar agar pengurutan tidak case sensitive
+      const nameB = b.nama.toUpperCase();
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+      return 0;
+    });
+
+    setFishes(sortedData);
+  };
+
+  // Sorting jumlah ikan tertinggi ke terendah
+  const sortDataByHighestQuantity = () => {
+    const sortedData = [...fishes].sort((a, b) => b.jumlah - a.jumlah);
+    setFishes(sortedData);
+  };
+
+  // Sorting jumlah ikan terendah ke tertinggi
+  const sortDataByLowestQuantity = () => {
+    const sortedData = [...fishes].sort((a, b) => a.jumlah - b.jumlah);
+    setFishes(sortedData);
+  };
+
+  // Sorting harga ikan tertinggi ke terendah
+  const sortDataByHighestPrice = () => {
+    const sortedData = [...fishes].sort((a, b) => b.harga - a.harga);
+    setFishes(sortedData);
+  };
+
+  // Sorting harga ikan terendah ke tertinggi
+  const sortDataByLowestPrice = () => {
+    const sortedData = [...fishes].sort((a, b) => a.harga - b.harga);
+    setFishes(sortedData);
+  };
+
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
+  // ...
+
+  // Fungsi untuk mengatur nilai pencarian
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  
+  // Fungsi untuk menangani pencarian saat tombol ditekan
+  const handleSearchSubmit = () => {
+    const filteredFishes = fishes.filter((fish) => {
+      return fish.nama.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setSearchResult(filteredFishes);
+  };
+
+  const renderFishList = () => {
+    const displayFishes = searchTerm.length > 0 ? searchResult : fishes;
+  }
 
 
   return (
@@ -276,9 +356,13 @@ const StokIkan = () => {
                 <input
                   type="search"
                   placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleSearch}
                   className="rounded-l-xl self-center py-4 border-0"
                 />
-                <button className="bg-blue-500 text-white self-center p-2 rounded-r-xl">
+                <button 
+                onClick={handleSearchSubmit}
+                className="bg-blue-500 text-white self-center p-2 rounded-r-xl">
                   <IoSearchOutline style={{ fontSize: "2.5rem" }} />
                 </button>
               </div>
@@ -292,15 +376,15 @@ const StokIkan = () => {
                   color: "black",
                 }}
               >
-                <DropdownItem as={Link} to="/ikan-terjual">
-                  {" "}
+                <DropdownItem onClick={sortDataAZ}>
+                  
                   A - Z
                 </DropdownItem>
-                <DropdownItem>Z - A</DropdownItem>
-                <DropdownItem>Stok Tertinggi</DropdownItem>
-                <DropdownItem>Stok Terendah</DropdownItem>
-                <DropdownItem>Harga Tertinggi</DropdownItem>
-                <DropdownItem>Harga Terendah</DropdownItem>
+                <DropdownItem onClick={sortDataZA}>Z - A</DropdownItem>
+                <DropdownItem onClick={sortDataByHighestQuantity}>Stok Tertinggi</DropdownItem>
+                <DropdownItem onClick={sortDataByLowestQuantity}>Stok Terendah</DropdownItem>
+                <DropdownItem onClick={sortDataByHighestPrice}>Harga Tertinggi</DropdownItem>
+                <DropdownItem onClick={sortDataByLowestPrice}>Harga Terendah</DropdownItem>
               </Dropdown>
             </div>
           </div>
@@ -348,18 +432,19 @@ const StokIkan = () => {
                     Delete
                   </button>
                 </div>
-                {/* Ganti button Edit dan Delete dengan fungsi handleEdit dan handleDelete */}
-                {/* <div className="flex justify-between px-4 md:px-8 mt-2">
-                  <button onClick={() => handleEdit(fish)}>Edit</button>
-                  <button onClick={() => handleDelete(fish.id)}>Delete</button>
-                </div> */}
+                
               </div>
             ))}
+          
           </div>
+          
         </div>
       </div>
+      {renderFishList()}
     </>
   );
 };
+
+
 
 export default privateRoute(StokIkan);

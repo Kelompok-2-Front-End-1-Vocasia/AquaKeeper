@@ -6,3 +6,9 @@
 .bg-header {
     background-color: #0D81D5;
 }
+
+.total-sold {
+    font-size: 48px; 
+    font-weight: bold; 
+    
+  }

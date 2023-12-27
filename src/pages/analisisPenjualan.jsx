@@ -1,73 +1,10 @@
-// import privateRoute from "../hoc/privateRoute";
-// import Navbar from "../components/Navbar";
-// import Header from "../components/Header";
-// import Menu from "../components/menu";
-
-// const analisisPenjualan = () => {
-//   return (
-//     <>
-//     <div>
-//     <Navbar />
-//     <Header />
-
-//     <Menu />
-//     </div>
-    
-//     </>
-//   )
-// }
-
-// export default privateRoute(analisisPenjualan);
-
-// import  { useState, useEffect } from "react";
-// import axios from "axios";
-
-// const StockAndSales = () => {
-//   const [totalStock, setTotalStock] = useState(0);
-//   const [totalSold, setTotalSold] = useState(0);
-
-//   useEffect(() => {
-//     fetchTotalStock();
-//     fetchTotalSold();
-//   }, []);
-
-//   const fetchTotalStock = async () => {
-//     try {
-//       const response = await axios.get("http://localhost:3002/fishes");
-
-//       // Menghitung total stok ikan dari data yang diterima
-//       const stock = response.data.reduce((acc, fish) => acc + parseInt(fish.jumlah), 0);
-//       setTotalStock(stock);
-//     } catch (error) {
-//       console.error("There was a problem fetching the total stock:", error);
-//     }
-//   };
-
-//   const fetchTotalSold = async () => {
-//     try {
-//       const response = await axios.get("http://localhost:3003/sales");
-
-//       // Menghitung total ikan yang terjual dari data yang diterima
-//       const sold = response.data.reduce((acc, sale) => acc + parseInt(sale.quantity), 0);
-//       setTotalSold(sold);
-//     } catch (error) {
-//       console.error("There was a problem fetching the total sold:", error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Total Stok Ikan: {totalStock}</h2>
-//       <h2>Total Ikan Terjual: {totalSold}</h2>
-//     </div>
-//   );
-// };
-
-// export default StockAndSales;
-
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { PieChart } from 'react-minimal-pie-chart';
+import privateRoute from "../hoc/privateRoute";
+import Navbar from "../components/Navbar";
+import Header from "../components/Header";
+import Menu from "../components/menu";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { PieChart } from "react-minimal-pie-chart";
 
 const StockAndSales = () => {
   const [totalStock, setTotalStock] = useState(0);
@@ -79,39 +16,91 @@ const StockAndSales = () => {
 
   const fetchData = async () => {
     try {
-      const responseFishes = await axios.get('http://localhost:3002/fishes');
-      const responseSales = await axios.get('http://localhost:3003/sales');
+      const responseFishes = await axios.get("http://localhost:3002/fishes");
+      const responseSales = await axios.get("http://localhost:3003/sales");
 
-      const stock = responseFishes.data.reduce((acc, fish) => acc + parseInt(fish.jumlah), 0);
+      const stock = responseFishes.data.reduce(
+        (acc, fish) => acc + parseInt(fish.jumlah),
+        0
+      );
       setTotalStock(stock);
 
-      const sold = responseSales.data.reduce((acc, sale) => acc + parseInt(sale.quantity), 0);
+      const sold = responseSales.data.reduce(
+        (acc, sale) => acc + parseInt(sale.quantity),
+        0
+      );
       setTotalSold(sold);
     } catch (error) {
-      console.error('There was a problem fetching data:', error);
+      console.error("There was a problem fetching data:", error);
     }
   };
 
   // Data untuk Pie Chart
   const pieChartData = [
-    { title: 'Total Stock', value: totalStock, color: 'blue' },
-    { title: 'Total Sold', value: totalSold, color: 'red' },
+    { title: "Total Stock", value: totalStock, color: "#81FF1E" },
+    { title: "Total Sold", value: totalSold, color: "#4318FF" },
   ];
 
   return (
     <div>
-      <h2>Total Stok Ikan: {totalStock}</h2>
-      <h2>Total Ikan Terjual: {totalSold}</h2>
-      <div style={{ width: '300px', height: '300px' }}>
-        <PieChart
-          data={pieChartData}
-          label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
-        />
+      <Navbar />
+      <Header />
+
+      <Menu />
+
+      <h1 className="mr-24 ml-24 mt-8 font-bold text-[36px] opacity-50">
+        Rekap Data
+      </h1>
+
+      <div className="flex flex-row justify-between gap-2 mt-4 mr-24 ml-24 pb-12">
+        <div className="bg-white w-[300px] rounded-xl text-left">
+          <h2 className="mt-3 px-5">
+            Total Ikan Terjual <br />
+            <span className="total-sold">{totalSold}</span> ikan
+          </h2>
+          <img
+            src="/src/assets/saving.svg"
+            alt=""
+            className="w-[200px] mt-12 mx-auto"
+            style={{ display: "block" }}
+          />
+        </div>
+
+        <div className="bg-white w-[300px] rounded-xl text-left">
+          <h2 className="mt-3 px-5">
+            Total Stok Ikan <br />
+            <span className="total-sold">{totalStock}</span> ikan
+          </h2>
+          <img
+            src="/src/assets/boxes.svg"
+            alt=""
+            className="w-[200px] mt-12 mx-auto"
+            style={{ display: "block" }}
+          />
+        </div>
+
+        <div className="bg-white w-[300px] rounded-xl text-left ">
+            <div className="mt-3 px-5">
+            <h1 >Persentase </h1>
+            <div className="flex gap-3 mt-3">
+                <img src="/src/assets/ikan-terjual.svg" alt="" />
+                <p>Ikan Terjual</p>
+            </div>
+            <div className="flex gap-3 mt-3">
+                <img src="/src/assets/stok-ikan.svg" alt="" />
+                <p>Stok Ikan</p>
+            </div>
+            </div>
+          <div style={{ width: "200px", height: "200px", margin: "40px auto" }}>
+            <PieChart
+              data={pieChartData}
+              label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default StockAndSales;
-
-
+export default privateRoute(StockAndSales);
