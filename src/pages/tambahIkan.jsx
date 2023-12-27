@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ImageUploadComponent from "../components/unggahFoto";
+// import ImageUploadComponent from "../components/unggahFoto";
 
 function FishComponent() {
   const [fishes, setFishes] = useState([]);
@@ -94,7 +94,7 @@ function FishComponent() {
         <button type="submit">{newFish.id ? "Update" : "Add"} Fish</button>
       </form>
 
-      <ImageUploadComponent/>
+      
     </div>
   );
 }

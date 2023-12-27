@@ -3,8 +3,9 @@
     {
       "id": 1,
       "nama": "Ikan Nemo",
-      "harga": 50,
-      "jumlah": "1000"
+      "harga": "301",
+      "jumlah": "1000",
+      "deskripsi": "wa"
     },
     {
       "id": 2,
@@ -17,6 +18,21 @@
       "nama": "Ikan Cupang",
       "harga": "2000",
       "jumlah": 20
+    },
+    {
+      "nama": "Ikan Hiass",
+      "harga": "4000",
+      "jumlah": "12",
+      "deskripsi": "ikan ni",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "nama": "ikan nias",
+      "harga": "2900",
+      "jumlah": "700",
+      "deskripsi": "ikaaann ikan"
     }
-  ]
+  ],
+  "sales": []
 }
