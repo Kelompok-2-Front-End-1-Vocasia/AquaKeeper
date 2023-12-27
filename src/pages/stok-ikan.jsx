@@ -92,16 +92,10 @@ const StokIkan = () => {
 
   const handleEdit = (fish) => {
 
-    // console.log("Fish object:", fish);
-
-
     setSelectedFish(fish);
     // Ensure fish.jumlah is converted to a number before setting it
     const jumlah = typeof fish.jumlah === 'string' ? parseInt(fish.jumlah) : fish.jumlah;
 
-    // console.log("Parsed Jumlah:", jumlah);
-
-  
     setNewFish({
       // Set the values based on the selected fish object
       id: fish.id,
@@ -172,8 +166,6 @@ const StokIkan = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-
-  // ...
 
   // Fungsi untuk mengatur nilai pencarian
   const handleSearch = (event) => {

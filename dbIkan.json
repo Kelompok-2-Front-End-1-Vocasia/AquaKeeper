@@ -4,7 +4,7 @@
       "id": 1,
       "nama": "Ikan Nemo",
       "harga": "302",
-      "jumlah": 200,
+      "jumlah": 100,
       "deskripsi": "wa"
     },
     {
@@ -18,7 +18,7 @@
       "id": 3,
       "nama": "Ikan Cupang",
       "harga": "2000",
-      "jumlah": 400,
+      "jumlah": 300,
       "deskripsi": "dd"
     },
     {
@@ -42,6 +42,6 @@
       "jumlah": 700,
       "deskripsi": "ww"
     }
-  ],
-  "sales": []
+  ]
+  
 }
