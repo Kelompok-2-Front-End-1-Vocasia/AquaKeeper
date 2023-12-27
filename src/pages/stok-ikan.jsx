@@ -14,7 +14,7 @@ const StokIkan = () => {
   // const [openModal, setOpenModal] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedFish, setSelectedFish] = useState(null); 
+  const [selectedFish, setSelectedFish] = useState(null);
 
   const openModal = () => {
     setIsOpen(true);
@@ -28,7 +28,7 @@ const StokIkan = () => {
   const [newFish, setNewFish] = useState({
     nama: "",
     harga: "",
-    jumlah: "",
+    jumlah: 0,
     deskripsi: "",
   });
 
@@ -39,15 +39,28 @@ const StokIkan = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3002/fishes");
-      setFishes(response.data);
+  
+      // Convert the 'jumlah' property to a number type for each fish
+      const updatedFishes = response.data.map(fish => {
+        return {
+          ...fish,
+          jumlah: typeof fish.jumlah === 'string' ? parseInt(fish.jumlah) : fish.jumlah
+        };
+      });
+  
+      setFishes(updatedFishes);
     } catch (error) {
       console.error("There was a problem fetching the data:", error);
     }
   };
 
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setNewFish({ ...newFish, [name]: value });
+
+    const newValue = name === 'jumlah' ? parseInt(value) : value;
+
+    setNewFish({ ...newFish, [name]: newValue });
   };
 
   const handleSubmit = async (event) => {
@@ -75,32 +88,32 @@ const StokIkan = () => {
     }
   };
 
-  // const handleEdit = (fish) => {
-  //   setNewFish({
-  //     id: fish.id,
-  //     nama: fish.nama,
-  //     harga: fish.harga,
-  //     jumlah: fish.jumlah,
-  //     deskripsi: fish.deskripsi,
-  //   });
-  // };
-
-  // const handleEdit = (fish) => {
-  //   setSelectedFish(fish);
-  //   setIsOpen(true);
-  // };
 
   const handleEdit = (fish) => {
+
+    // console.log("Fish object:", fish);
+
+
     setSelectedFish(fish);
-    setNewFish({ // Mengatur nilai newFish dengan data yang akan diedit
+    // Ensure fish.jumlah is converted to a number before setting it
+    const jumlah = typeof fish.jumlah === 'string' ? parseInt(fish.jumlah) : fish.jumlah;
+
+    // console.log("Parsed Jumlah:", jumlah);
+
+  
+    setNewFish({
+      // Set the values based on the selected fish object
       id: fish.id,
       nama: fish.nama,
       harga: fish.harga,
-      jumlah: fish.jumlah,
+      jumlah, // Assign the parsed value to jumlah
       deskripsi: fish.deskripsi,
     });
     setIsOpen(true);
   };
+  
+
+
   return (
     <>
       <div>
@@ -109,8 +122,8 @@ const StokIkan = () => {
 
         <Menu />
 
-        <div className="flex flex-col md:flex-row justify-between md:ml-24 md:mr-24 mt-12">
-          <div className=" flex justify-between mt-12 ml-24 mr-24">
+        <div className="flex justify-between gap-8 ml-24 mr-24">
+          <div className=" flex justify-between mt-12 ">
             <div className="">
               {/* Tombol untuk membuka modal */}
               <button
@@ -244,11 +257,9 @@ const StokIkan = () => {
 
                               <button
                                 type="submit"
-                                
                                 className="bg-[#0FED4D] py-3 px-5 text-white font-bold text-base rounded-xl"
-                                
                               >
-                                {newFish.id ? "Ubah" : "Tambah" } Ikan
+                                {newFish.id ? "Ubah" : "Tambah"} Ikan
                               </button>
                             </form>
                           </div>
@@ -259,47 +270,39 @@ const StokIkan = () => {
                 </div>
               )}
             </div>
-          </div>
-          {/* <button className="flex gap-4 text-black font-semibold px-8 py-4 rounded-2xl bg-white text-left focus:bg-blue-600 focus:text-white">
-            <img
-              src="/src/assets/plus.svg"
-              alt=""
-              className="w-6 self-center"
-            />
-            <p className="self-center">Tambah Data Ikan</p>
-          </button> */}
 
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <div className="flex flex-row md:flex-row">
-              <input
-                type="search"
-                placeholder="Search"
-                className="rounded-l-xl self-center py-3 border-0"
-              />
-              <button className="bg-blue-500 text-white self-center p-3 rounded-r-xl">
-                <IoSearchOutline style={{ fontSize: "2.5rem" }} />
-              </button>
+            <div className="flex gap-6 mt-4 md:mt-0">
+              <div className="flex flex-row md:flex-row">
+                <input
+                  type="search"
+                  placeholder="Search"
+                  className="rounded-l-xl self-center py-4 border-0"
+                />
+                <button className="bg-blue-500 text-white self-center p-2 rounded-r-xl">
+                  <IoSearchOutline style={{ fontSize: "2.5rem" }} />
+                </button>
+              </div>
+
+              <Dropdown
+                label="Filtering By"
+                dismissOnClick={false}
+                style={{
+                  borderRadius: "12px",
+                  backgroundColor: "white",
+                  color: "black",
+                }}
+              >
+                <DropdownItem as={Link} to="/ikan-terjual">
+                  {" "}
+                  A - Z
+                </DropdownItem>
+                <DropdownItem>Z - A</DropdownItem>
+                <DropdownItem>Stok Tertinggi</DropdownItem>
+                <DropdownItem>Stok Terendah</DropdownItem>
+                <DropdownItem>Harga Tertinggi</DropdownItem>
+                <DropdownItem>Harga Terendah</DropdownItem>
+              </Dropdown>
             </div>
-
-            <Dropdown
-              label="Filtering By"
-              dismissOnClick={false}
-              style={{
-                borderRadius: "12px",
-                backgroundColor: "white",
-                color: "black",
-              }}
-            >
-              <DropdownItem as={Link} to="/ikan-terjual">
-                {" "}
-                A - Z
-              </DropdownItem>
-              <DropdownItem>Z - A</DropdownItem>
-              <DropdownItem>Stok Tertinggi</DropdownItem>
-              <DropdownItem>Stok Terendah</DropdownItem>
-              <DropdownItem>Harga Tertinggi</DropdownItem>
-              <DropdownItem>Harga Terendah</DropdownItem>
-            </Dropdown>
           </div>
         </div>
 
@@ -332,15 +335,18 @@ const StokIkan = () => {
                   <p>{fish.harga}</p>
                 </div>
                 <div className="py-2 md:py-4 px-4 md:px-8">
-                  <button 
-                  onClick={() => handleEdit(fish)}
-                  className="mt-2 text-center text-white bg-[#0F8FED] p-2 w-full rounded-lg">
+                  <button
+                    onClick={() => handleEdit(fish)}
+                    className="mt-2 text-center text-white bg-[#0F8FED] p-2 w-full rounded-lg"
+                  >
                     Edit Stok
                   </button>
-                  <button 
-                  onClick={() => handleDelete(fish.id)}
-                  className="mt-2 text-center text-white bg-red-600 p-2 w-full rounded-lg"
-                  >Delete</button>
+                  <button
+                    onClick={() => handleDelete(fish.id)}
+                    className="mt-2 text-center text-white bg-red-600 p-2 w-full rounded-lg"
+                  >
+                    Delete
+                  </button>
                 </div>
                 {/* Ganti button Edit dan Delete dengan fungsi handleEdit dan handleDelete */}
                 {/* <div className="flex justify-between px-4 md:px-8 mt-2">
@@ -349,8 +355,6 @@ const StokIkan = () => {
                 </div> */}
               </div>
             ))}
-
-            
           </div>
         </div>
       </div>

@@ -13,22 +13,46 @@
       "quantity": 5
     },
     {
-      "id": 3,
-      "date": "2023-12-02",
-      "fish_id": "3",
-      "quantity": 8
+      "date": "2023-12-16",
+      "fishId": "6",
+      "quantity": 10,
+      "id": 3
     },
     {
       "date": "",
-      "fishId": "3",
-      "quantity": 5,
+      "fishId": "2",
+      "quantity": 4,
       "id": 4
     },
     {
-      "date": "2023-12-21",
+      "date": "",
       "fishId": "2",
       "quantity": 4,
       "id": 5
+    },
+    {
+      "date": "2023-12-22",
+      "fishId": "5",
+      "quantity": 10,
+      "id": 6
+    },
+    {
+      "date": "2023-12-08",
+      "fishId": "1",
+      "quantity": 10,
+      "id": 7
+    },
+    {
+      "date": "2023-12-07",
+      "fishId": "4",
+      "quantity": 4,
+      "id": 8
+    },
+    {
+      "date": "",
+      "fishId": "5",
+      "quantity": 12,
+      "id": 9
     }
   ]
 }
