@@ -66,7 +66,7 @@ const Login = () => {
                 AquaKeeper
               </div>
             </div>
-            <div className="flex flex-col w-full pb-[44px] sm:flex-row items-center sm:items-start sm:justify-center sm:mt-[16px]">
+            <div className="flex flex-col bg-[#F6F6F6] sm:bg-[#FFFFFF] w-full pb-[44px] sm:flex-row items-center sm:items-start sm:justify-center sm:mt-[16px]">
               <div className="w-[235px] h-[235px] sm:w-[341px] sm:h-[341px]">
                 <img src="/src/assets/fish-bowl.png" alt="" />
               </div>

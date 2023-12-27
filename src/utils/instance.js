@@ -7,3 +7,10 @@ export const instance = axios.create({
   },
   timeout: 5000,
 });
+
+export const instanceImg = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_BASH_URL,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
