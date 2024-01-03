@@ -6,5 +6,21 @@
       "id": 1
     }
   ],
-  "fishes": []
+  "fishes": [
+    {
+      "nama": "Ikan Badut",
+      "harga": 15000,
+      "jumlah": 25,
+      "imgUrl": "/src/assets/ikon-ikan.png",
+      "id": 1
+    },
+    {
+      "nama": "Ikan Hiu",
+      "jumlah": 29,
+      "harga": 10000,
+      "imgUrl": "http://res.cloudinary.com/dhprwa6af/image/upload/v1703738027/images/vjciczdrmddozkrwgv6l.png",
+      "id": 2
+    }
+  ],
+  "sales": []
 }

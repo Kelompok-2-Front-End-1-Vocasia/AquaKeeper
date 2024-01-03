@@ -16,43 +16,61 @@ const StokIkan = () => {
         <Menu />
 
         <div className="flex flex-col md:flex-row items-center justify-between mt-12 ml-4 md:ml-24 mr-4 md:mr-24">
-        <button className="flex gap-4 text-black font-semibold px-4 py-2 md:px-8 md:py-4 rounded-2xl bg-white text-left focus:bg-blue-600 focus:text-white">
-          <img src="/src/assets/plus.svg" alt="" className="w-4 md:w-6 self-center" />
-          <p className="self-center">Tambah Data Ikan</p>
+          <button className="flex gap-4 text-black font-semibold px-4 py-2 md:px-8 md:py-4 rounded-2xl bg-white text-left focus:bg-blue-600 focus:text-white">
+            <img
+              src="/src/assets/plus.svg"
+              alt=""
+              className="w-4 md:w-6 self-center"
+            />
+            <p className="self-center">Tambah Data Ikan</p>
           </button>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-4 md:ml-24 mr-4 md:mr-24 mt-4"></div>
           <div className="flex gap-4 md:gap-6">
             <div className="flex">
-              <input 
-              type="search" 
-              placeholder="Search"
-              className="rounded-l-xl self-center py-3 border-0"
+              <input
+                type="search"
+                placeholder="Search"
+                className="rounded-l-xl self-center py-3 border-0"
               />
-            <button className="bg-blue-500 text-white self-center p-1 rounded-r-xl">
-              <IoSearchOutline style={{ fontSize: '2.5rem' }} />
+              <button className="bg-blue-500 text-white self-center p-1 rounded-r-xl">
+                <IoSearchOutline style={{ fontSize: "2.5rem" }} />
               </button>
             </div>
 
-            <Dropdown label="Filtering By" dismissOnClick={false} style={{ borderRadius: '12px', backgroundColor: 'white', color: 'black' }}>
-            <DropdownItem as={Link} to="/ikan-terjual"> A - Z</DropdownItem>
-            <DropdownItem>Z - A</DropdownItem>
-            <DropdownItem>Stok Tertinggi</DropdownItem>
-            <DropdownItem>Stok Terendah</DropdownItem>
-            <DropdownItem>Harga Tertinggi</DropdownItem>
-            <DropdownItem>Harga Terendah</DropdownItem>
-          </Dropdown>
-
+            <Dropdown
+              label="Filtering By"
+              dismissOnClick={false}
+              style={{
+                borderRadius: "12px",
+                backgroundColor: "white",
+                color: "black",
+              }}
+            >
+              <DropdownItem as={Link} to="/ikan-terjual">
+                {" "}
+                A - Z
+              </DropdownItem>
+              <DropdownItem>Z - A</DropdownItem>
+              <DropdownItem>Stok Tertinggi</DropdownItem>
+              <DropdownItem>Stok Terendah</DropdownItem>
+              <DropdownItem>Harga Tertinggi</DropdownItem>
+              <DropdownItem>Harga Terendah</DropdownItem>
+            </Dropdown>
           </div>
         </div>
       </div>
 
       <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ml-4 md:ml-24 mr-4 md:mr-24 mt-12">
-      <div className="bg-white rounded-3xl max-w-full md:max-w-sm">
-      <div className="flex justify-center items-center">
-        <img src="/src/assets/ikan.svg" alt="" className="self-center mx-auto" />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ml-4 md:ml-24 mr-4 md:mr-24 mt-12">
+          <div className="bg-white rounded-3xl max-w-full md:max-w-sm">
+            <div className="flex justify-center items-center">
+              <img
+                src="/src/assets/ikan.svg"
+                alt=""
+                className="self-center mx-auto"
+              />
+            </div>
             <div className="flex justify-between px -4 md: px-8">
               <p>Total Stok</p>
               <p>600 / 1000</p>
@@ -138,10 +156,6 @@ const StokIkan = () => {
               </button>
             </div>
           </div>
-
-          
-
-         
         </div>
       </div>
     </>

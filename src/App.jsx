@@ -4,6 +4,8 @@ import Login from "./pages/login";
 import StokIkan from "./pages/stok-ikan";
 import IkanTerjual from "./pages/ikan-terjual";
 import StokIkanku from "./pages/stok-ikanku";
+import AnalisisPenjualan from "./pages/analisis-penjualan";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -12,6 +14,7 @@ const App = () => {
         <Route path="/home" element={<StokIkanku />} />
         <Route path="/ikan-terjual" element={<IkanTerjual />} />
         <Route path="/kelola-ikan/:id" element={<IkanTerjual />} />
+        <Route path="/analisis-penjualan" element={<AnalisisPenjualan />} />
       </Routes>
     </BrowserRouter>
   );

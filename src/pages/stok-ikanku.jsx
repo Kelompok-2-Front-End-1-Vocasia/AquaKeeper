@@ -34,7 +34,7 @@ const StokIkanKu = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await instance.get("/fishes");
+        const res = await instance.get("http://localhost:3000/fishes");
         setFishes(res.data);
       } catch (err) {
         console.error(err);
@@ -53,7 +53,7 @@ const StokIkanKu = () => {
   };
 
   const handleUpdate = async (id) => {
-    const res = await instance.get(`/fishes/${id}`);
+    const res = await instance.get(`http://localhost:3000/fishes/${id}`);
     setIsUpdating(true);
     setOpenModal(true);
     setDataToUpdate(res.data);
@@ -64,7 +64,7 @@ const StokIkanKu = () => {
   };
 
   const handleDelete = async (id) => {
-    const res = await instance.delete(`/fishes/${id}`);
+    const res = await instance.delete(`http://localhost:3000/fishes/${id}`);
     window.location.reload();
   };
 
@@ -99,7 +99,7 @@ const StokIkanKu = () => {
             };
 
             const res = await instance.put(
-              `/fishes/${idToUpdate}`,
+              `http://localhost:3000/fishes/${idToUpdate}`,
               dataForUpdate
             );
 
@@ -117,7 +117,7 @@ const StokIkanKu = () => {
             };
 
             const res = await instance.put(
-              `/fishes/${idToUpdate}`,
+              `http://localhost:3000/fishes/${idToUpdate}`,
               dataForUpdate
             );
 
@@ -152,7 +152,7 @@ const StokIkanKu = () => {
             };
 
             const res = await instance
-              .post("/fishes", fishData)
+              .post("http://localhost:3000/fishes", fishData)
               .then((res) => res);
 
             console.log({ status: res.status, statusText: res.statusText });
@@ -165,7 +165,7 @@ const StokIkanKu = () => {
             };
 
             const res = await instance
-              .post("/fishes", fishData)
+              .post("http://localhost:3000/fishes", fishData)
               .then((res) => res);
 
             console.log({ status: res.status, statusText: res.statusText });
@@ -350,7 +350,7 @@ const StokIkanKu = () => {
                 <button className="w-[99px] h-[30px] bg-[#0D81D5] text-white text-[9px] font-medium rounded-[30px] flex items-center shadow-md sm:w-[385px] sm:h-[75px] sm:text-[24px] sm:flex sm:items-center">
                   <img
                     src="/src/assets/ikan-badut.svg"
-                    className="w-[18px] ms-2 bg-cover sm:w-[47px] sm:ms-12 sm:me-3"
+                    className="w-[18px] ms-3 bg-cover sm:w-[47px] sm:ms-12 sm:me-3"
                   />
                   <div className="mt-1 ms-2">
                     <div className="relative sm:static">
@@ -361,16 +361,40 @@ const StokIkanKu = () => {
                   </div>
                 </button>
               </Link>
+              <Link to={"/ikan-terjual"}>
+                <button className="w-[99px] h-[30px] bg-[#0D81D5] text-white text-[9px] font-medium rounded-[30px] flex items-center shadow-md sm:w-[385px] sm:h-[75px] sm:text-[24px] sm:flex sm:items-center">
+                  <img
+                    src="/src/assets/dollar.svg"
+                    className="w-[18px] ms-3 bg-cover sm:w-[47px] sm:ms-20 sm:me-3"
+                  />
+                  <div className=" ms-1">
+                    <div>Ikan Terjual</div>
+                  </div>
+                </button>
+              </Link>
+              <Link to={"/analisis-penjualan"}>
+                <button className="w-[99px] h-[30px] bg-[#0D81D5] text-white text-[9px] font-medium rounded-[30px] flex items-center shadow-md sm:w-[385px] sm:h-[75px] sm:text-[24px] sm:flex sm:items-center">
+                  <img
+                    src="/src/assets/growth.svg"
+                    className="w-[18px] ms-3 bg-cover sm:w-[47px] sm:ms-12 sm:me-3"
+                  />
+                  <div className="ms-0">
+                    <div>Analisis Penjualan</div>
+                  </div>
+                </button>
+              </Link>
+            </div>
+            <div className="flex flex-row gap-[7px] w-full justify-between px-[25px] sm:px-0">
               <button
-                className="w-[72px] h-[30px] bg-[#0D81D5] text-white text-[9px] font-medium rounded-[30px] flex items-center shadow-md sm:w-[385px] sm:h-[75px] sm:text-[24px]"
+                className="w-[99px] h-[30px] bg-[#0D81D5] text-white text-[9px] font-medium rounded-[30px] flex items-center shadow-md sm:w-[385px] sm:h-[75px] sm:text-[24px]"
                 onClick={() => setOpenModal(true)}
               >
                 <img
                   src="/src/assets/plus.svg"
-                  className="w-[11px] ms-2 bg-cover me-1 sm:w-[24px] sm:ms-14 sm:me-7"
+                  className="w-[11px] ms-3 bg-cover me-1 sm:w-[24px] sm:ms-14 sm:me-7"
                 />
                 <span>
-                  Tambah{" "}
+                  Tambah <span className="sm:hidden">Ikan</span>
                   <span className="hidden sm:inline-block">Data Ikan</span>
                 </span>
               </button>
